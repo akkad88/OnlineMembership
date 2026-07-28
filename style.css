@@ -18,7 +18,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: "Noto Naskh Arabic", Tahoma, Arial, sans-serif !important;
+    font-family: 'Cairo', sans-serif;
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -118,6 +118,7 @@ body {
     color: #ffffff;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     margin-bottom: 4px;
+    word-spacing: 5px;
 }
 
 .party-subtitle {
@@ -166,6 +167,7 @@ body {
     font-size: 1rem;
     font-weight: 800;
     backdrop-filter: blur(8px);
+    word-spacing: 3px;
 }
 
 /* Form Wrapper */
@@ -193,6 +195,8 @@ form {
     margin-bottom: 20px;
     padding-bottom: 10px;
     border-bottom: 2px solid #f1f5f9;
+    white-space: normal;
+    word-spacing: 4px;
 }
 
 .section-header .icon-box {
@@ -456,6 +460,10 @@ textarea {
     max-width: 190mm !important;
     margin: auto;
     zoom: .86;
+    letter-spacing: normal !important;
+    word-spacing: 3px !important;
+    font-kerning: normal !important;
+    text-rendering: optimizeLegibility;
 }
 
 .pdf-exporting .section-card {
