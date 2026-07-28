@@ -460,10 +460,11 @@ textarea {
     max-width: 190mm !important;
     margin: auto;
     zoom: .86;
-    letter-spacing: normal !important;
-    word-spacing: 3px !important;
     font-kerning: normal !important;
     text-rendering: optimizeLegibility;
+    font-family: Arial, Tahoma, sans-serif !important;
+    letter-spacing: 0 !important;
+    word-spacing: normal !important;
 }
 
 .pdf-exporting .section-card {
