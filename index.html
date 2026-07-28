@@ -182,119 +182,132 @@
         </div>
     </div>
 
-<script>
-    const RECEIVER_EMAIL = "ummahparty01@gmail.com";
+ <script>
+ const RECEIVER_EMAIL = "akkad_fox@hotmail.com";
 
-    function previewImage(event) {
-        const reader = new FileReader();
-        reader.onload = function () {
-            const output = document.getElementById('photoPreview');
-            const uploadContent = document.getElementById('uploadContent');
-            output.src = reader.result;
-            output.style.display = 'block';
-            if (uploadContent) uploadContent.style.display = 'none';
-        };
-        if (event.target.files[0]) {
-            reader.readAsDataURL(event.target.files[0]);
-        }
-    }
+ function previewImage(event) {
+     const reader = new FileReader();
+     reader.onload = function () {
+         const output = document.getElementById('photoPreview');
+         const uploadContent = document.getElementById('uploadContent');
+         output.src = reader.result;
+         output.style.display = 'block';
+         if (uploadContent) uploadContent.style.display = 'none';
+     };
+     if (event.target.files[0]) {
+         reader.readAsDataURL(event.target.files[0]);
+     }
+ }
 
-    async function handleSubmit(e) {
-        e.preventDefault();
-        
-        const submitBtn = document.getElementById('submitBtn');
-        const originalBtnText = submitBtn.innerHTML;
-        const fullName = document.getElementById('fullName').value.trim();
-        const form = document.getElementById('membershipForm');
-    
-        if (RECEIVER_EMAIL === "your-email@domain.com") {
-            alert("تنبيه: يرجى وضع بريدك الإلكتروني الحقيقي في المتغير RECEIVER_EMAIL داخل الكود.");
-            return;
-        }
-    
-        try {
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = "جاري إنشاء ملف الـ PDF... ⏳";
-    
-            // 1. إخفاء العناصر غير المطلوبة في الـ PDF
-            const elementsToHide = document.querySelectorAll('.no-print');
-            elementsToHide.forEach(el => el.style.visibility = 'hidden');
-    
-            const element = document.getElementById('printableForm');
-            const opt = {
-                margin:       [6, 6, 6, 6],
-                filename:     `استمارة_انتساب_${fullName}.pdf`,
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2, useCORS: true, allowTaint: true, scrollY: 0 },
-                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            };
-    
-            // 2. توليد ملف الـ PDF كـ Blob
-            const pdfBlob = await html2pdf().set(opt).from(element).output('blob');
-            elementsToHide.forEach(el => el.style.visibility = 'visible');
-    
-            submitBtn.innerHTML = "جاري إرسال البريد الإلكتروني والمرفق... ✉️";
-    
-            // 3. ربط ملف الـ PDF بحقل المرفقات المخفي برمجياً
-            const pdfFile = new File([pdfBlob], `استمارة_انتساب_${fullName}.pdf`, { type: 'application/pdf' });
-            const container = new DataTransfer();
-            container.items.add(pdfFile);
-            document.getElementById('pdfAttachmentInput').files = container.files;
-    
-            // 4. إعداد النموذج للإرسال إلى FormSubmit عبر Iframe خفي
-            form.action = `https://formsubmit.co/${RECEIVER_EMAIL}`;
-            form.method = "POST";
-            form.enctype = "multipart/form-data";
-            form.target = "hidden_iframe";
-    
-            // 5. الاستماع لانتهاء الإرسال لعرض التنبيه وإعادة ضبط النموذج
-            const iframe = document.getElementById('hidden_iframe');
-            iframe.onload = function() {
-                alert(`✅ تم إرسال طلب الانتساب بنجاح!\nالعضو: ${fullName}\nوصلت الاستمارة مع مرفق الـ PDF.`);
-                form.reset();
-                document.getElementById('photoPreview').style.display = 'none';
-                if (document.getElementById('uploadContent')) {
-                    document.getElementById('uploadContent').style.display = 'flex';
-                }
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnText;
-            };
-    
-            // 6. إرسال النموذج رسمياً
-            form.submit();
-    
-        } catch (error) {
-            console.error(error);
-            alert("حدث خطأ أثناء معالجة الطلب وتوليد ملف الـ PDF.");
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalBtnText;
-        }
-    }
+ // دالة مساعدة لتجهيز الصفحة وإخفاء العناصر غير المطلوبة والـ Placeholders أثناء التصدير
+ function prepareForPDF() {
+     const container = document.getElementById('printableForm');
+     container.classList.add('pdf-exporting');
 
-    function exportToPDF() {
-        const fullName = document.getElementById('fullName').value.trim() || "طلب";
-        const elementsToHide = document.querySelectorAll('.no-print');
-        elementsToHide.forEach(el => el.style.visibility = 'hidden');
+     // إخفاء الأزرار و عناصر الـ no-print
+     const elementsToHide = document.querySelectorAll('.no-print');
+     elementsToHide.forEach(el => el.style.visibility = 'hidden');
+     return container;
+ }
 
-        const element = document.getElementById('printableForm');
+ function restoreAfterPDF() {
+     const container = document.getElementById('printableForm');
+     container.classList.remove('pdf-exporting');
 
-        const opt = {
-            margin: [6, 6, 6, 6],
-            filename: `استمارة_انتساب_${fullName}.pdf`,
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true, allowTaint: true, scrollY: 0 },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-        };
+     const elementsToHide = document.querySelectorAll('.no-print');
+     elementsToHide.forEach(el => el.style.visibility = 'visible');
+ }
 
-        html2pdf().set(opt).from(element).save().then(() => {
-            elementsToHide.forEach(el => el.style.visibility = 'visible');
-        }).catch(err => {
-            console.error(err);
-            elementsToHide.forEach(el => el.style.visibility = 'visible');
-            alert("⚠️ متعذر تصدير الـ PDF مباشرة بسبب قيود أمان الملفات المحلية.\nيرجى استخدام Live Server أو تحويل الشعار إلى Base64.");
-        });
-    }
-</script>
+ async function handleSubmit(e) {
+     e.preventDefault();
+
+     const submitBtn = document.getElementById('submitBtn');
+     const originalBtnText = submitBtn.innerHTML;
+     const fullName = document.getElementById('fullName').value.trim();
+     const form = document.getElementById('membershipForm');
+
+     if (RECEIVER_EMAIL === "your-email@domain.com") {
+         alert("تنبيه: يرجى وضع بريدك الإلكتروني الحقيقي في المتغير RECEIVER_EMAIL داخل الكود.");
+         return;
+     }
+
+     try {
+         submitBtn.disabled = true;
+         submitBtn.innerHTML = "جاري إنشاء ملف الـ PDF... ⏳";
+
+         // تجهيز الحاويات وإخفاء الـ placeholders
+         const element = prepareForPDF();
+
+         const opt = {
+             margin:       [5, 5, 5, 5],
+             filename:     `استمارة_انتساب_${fullName}.pdf`,
+             image:        { type: 'jpeg', quality: 0.98 },
+             html2canvas:  { scale: 2, useCORS: true, allowTaint: true, scrollY: 0 },
+             jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+         };
+
+         // توليد ملف الـ PDF كـ Blob
+         const pdfBlob = await html2pdf().set(opt).from(element).output('blob');
+         restoreAfterPDF();
+
+         submitBtn.innerHTML = "جاري إرسال البريد الإلكتروني والمرفق... ✉️";
+
+         // ربط ملف الـ PDF بحقل المرفقات المخفي برمجياً
+         const pdfFile = new File([pdfBlob], `استمارة_انتساب_${fullName}.pdf`, { type: 'application/pdf' });
+         const dataTransfer = new DataTransfer();
+         dataTransfer.items.add(pdfFile);
+         document.getElementById('pdfAttachmentInput').files = dataTransfer.files;
+
+         // إعداد النموذج للإرسال إلى FormSubmit عبر Iframe خفي
+         form.action = `https://formsubmit.co/${RECEIVER_EMAIL}`;
+         form.method = "POST";
+         form.enctype = "multipart/form-data";
+         form.target = "hidden_iframe";
+
+         const iframe = document.getElementById('hidden_iframe');
+         iframe.onload = function() {
+             alert(`✅ تم إرسال طلب الانتساب بنجاح!\nالعضو: ${fullName}\nوصلت الاستمارة مع مرفق الـ PDF.`);
+             form.reset();
+             document.getElementById('photoPreview').style.display = 'none';
+             if (document.getElementById('uploadContent')) {
+                 document.getElementById('uploadContent').style.display = 'flex';
+             }
+             submitBtn.disabled = false;
+             submitBtn.innerHTML = originalBtnText;
+         };
+
+         form.submit();
+
+     } catch (error) {
+         console.error(error);
+         restoreAfterPDF();
+         alert("حدث خطأ أثناء معالجة الطلب وتوليد ملف الـ PDF.");
+         submitBtn.disabled = false;
+         submitBtn.innerHTML = originalBtnText;
+     }
+ }
+
+ function exportToPDF() {
+     const fullName = document.getElementById('fullName').value.trim() || "طلب";
+     const element = prepareForPDF();
+
+     const opt = {
+         margin: [5, 5, 5, 5],
+         filename: `استمارة_انتساب_${fullName}.pdf`,
+         image: { type: 'jpeg', quality: 0.98 },
+         html2canvas: { scale: 2, useCORS: true, allowTaint: true, scrollY: 0 },
+         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+     };
+
+     html2pdf().set(opt).from(element).save().then(() => {
+         restoreAfterPDF();
+     }).catch(err => {
+         console.error(err);
+         restoreAfterPDF();
+         alert("⚠️ متعذر تصدير الـ PDF مباشرة بسبب قيود أمان الملفات المحلية.\nيرجى استخدام Live Server أو تحويل الشعار إلى Base64.");
+     });
+ }
+ </script>
 
 </body>
 </html>
