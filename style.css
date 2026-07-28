@@ -1,3 +1,4 @@
+
 :root {
     --primary-navy: #0a192f;
     --secondary-navy: #112240;
@@ -129,6 +130,7 @@ body {
     margin-bottom: 20px;
 }
 
+/* إخفاء الـ placeholder أثناء التصدير */
 .pdf-exporting input::placeholder,
 .pdf-exporting textarea::placeholder {
     opacity: 0 !important;
@@ -451,7 +453,8 @@ textarea {
     }
 }
 
-/* Export settings - تمت التعديلات هنا لإلغاء تداخل الخطوط والظلال أثناء الـ PDF */
+/* Export settings */
+
 .pdf-exporting {
     width: 190mm !important;
     max-width: 190mm !important;
@@ -460,23 +463,9 @@ textarea {
     font-kerning: normal !important;
     text-rendering: optimizeLegibility;
     font-family: 'Cairo', sans-serif !important;
-    letter-spacing: normal !important;
+    letter-spacing: 0 !important;
     word-spacing: normal !important;
     direction: rtl;
-}
-
-.pdf-exporting * {
-    text-shadow: none !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-}
-
-.pdf-exporting .party-title,
-.pdf-exporting .party-subtitle,
-.pdf-exporting .form-badge-title,
-.pdf-exporting .section-header {
-    letter-spacing: normal !important;
-    word-spacing: normal !important;
 }
 
 .pdf-exporting .section-card {
