@@ -75,7 +75,7 @@
                         <input type="date" id="birthDate" required>
                     </div>
                     <div class="form-group">
-                        <label> المحافظة / المدينة مكان الولادة <span class="required">*</span></label>
+                        <label> مكان الولادة المحافظة / المدينة  <span class="required">*</span></label>
                         <input type="text" id="birthPlace" placeholder="" required>
                     </div>
                 </div>
@@ -117,12 +117,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label> الدولة - المدينة بلد ومكان الإقامة الحالي <span class="required">*</span></label>
+                    <label>  بلد ومكان الإقامة الحالي (الدولة - المدينة) <span class="required">*</span></label>
                     <input type="text" id="residence" placeholder="" required>
                 </div>
 
                 <div class="form-group">
-                    <label>العنوان التفصيلي المنطقة / الشارع</label>
+                    <label> (العنوان التفصيلي (المنطقة - الشارع</label>
                     <textarea id="address" rows="2" placeholder=""></textarea>
                 </div>
             </div>
@@ -137,7 +137,7 @@
                 <div class="form-row form-row-2">
                     <div class="form-group">
                         <label>رقم الهاتف / واتساب <span class="required">*</span></label>
-                        <input type="tel" id="phone" placeholder="+963 ..." required>
+                        <input type="tel" id="phone" placeholder="+963.." required>
                     </div>
                     <div class="form-group">
                         <label>name@domain.com البريد الإلكتروني</label>
@@ -179,7 +179,7 @@
     </div>
 
     <script>
-    const RECEIVER_EMAIL = "akkad_fox@hotmail.com";
+    const RECEIVER_EMAIL = "ummahparty02@gmail.com";
 
     function previewImage(event) {
         const reader = new FileReader();
@@ -226,7 +226,7 @@
         const fullName = document.getElementById('fullName').value.trim();
         const form = document.getElementById('membershipForm');
 
-        if (RECEIVER_EMAIL === "your-email@domain.com") {
+        if (RECEIVER_EMAIL === "") {
             alert("تنبيه: يرجى وضع بريدك الإلكتروني الحقيقي في المتغير RECEIVER_EMAIL داخل الكود.");
             return;
         }
