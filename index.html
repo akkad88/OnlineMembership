@@ -195,21 +195,15 @@
         }
     }
 
-    async function prepareForPDF(){
-        const container = document.getElementById('printableForm');
-        container.classList.add('pdf-exporting');
-        document.querySelectorAll("input,textarea").forEach(el => {
-            el.dataset.placeholder = el.placeholder;
-            if (el.value.trim() === "") {
-                el.placeholder = "";
-            }
-        });
-        document.querySelectorAll(".no-print").forEach(el => {
-            el.style.visibility = "hidden";
-        });
-        await document.fonts.ready;
-        return container;
-    }
+   async function prepareForPDF(){
+    const container = document.getElementById('printableForm');
+    container.classList.add('pdf-exporting');
+    await document.fonts.ready;
+    document.querySelectorAll('.no-print').forEach(el=>{
+        el.style.visibility='hidden';
+    });
+    return container;
+}
 
     function restoreAfterPDF() {
         const container = document.getElementById("printableForm");
@@ -282,9 +276,9 @@
         }
     }
 
-    function exportToPDF() {
+    async function exportToPDF() {
         const fullName = document.getElementById('fullName').value.trim() || "طلب";
-        const element = prepareForPDF();
+        const element = await prepareForPDF();
 
         const opt = {
             margin: [6, 6, 6, 6],
