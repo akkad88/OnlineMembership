@@ -1,4 +1,3 @@
-
 :root {
     --primary-navy: #0a192f;
     --secondary-navy: #112240;
@@ -27,10 +26,10 @@ body {
     background-image: radial-gradient(at 0% 0%, rgba(197, 160, 89, 0.12) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(0, 107, 60, 0.15) 0px, transparent 50%);
     color: var(--text-dark);
     min-height: 100vh;
-    padding: 30px 15px;
+    padding: 20px 10px; /* تقليل padding الجسم */
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* محاذاة للأعلى */
 }
 
 .main-container {
@@ -43,14 +42,14 @@ body {
     position: relative;
 }
 
-/* Header design with grand visual presence */
+/* Header design - تقليل المساحات */
 .header {
     background: linear-gradient(135deg, #06101e 0%, #0d1b2a 60%, #00381e 100%);
     color: #ffffff;
     text-align: center;
-    padding: 45px 25px 35px 25px;
+    padding: 15px 10px 10px 10px; /* تقليل padding الترويسة */
     position: relative;
-    border-bottom: 4px solid var(--accent-gold);
+    border-bottom: 3px solid var(--accent-gold);
 }
 
 .header::before {
@@ -64,115 +63,62 @@ body {
     pointer-events: none;
 }
 
-.section-card {
-    page-break-inside: avoid;
-    break-inside: avoid;
-}
-
-.form-group {
-    page-break-inside: avoid;
-    break-inside: avoid;
-}
-
-.form-row {
-    page-break-inside: avoid;
-    break-inside: avoid;
-}
-
-.header {
-    page-break-after: avoid;
-}
-
-.footer {
-    page-break-before: avoid;
-}
-
-/* Circular Logo Badge Styling */
+/* Circular Logo Badge - تصغير الشعار */
 .logo-badge {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 18px auto;
+    width: 70px; /* تصغير الحجم */
+    height: 70px; /* تصغير الحجم */
+    margin: 0 auto 5px auto; /* تقليل الهوامش */
     background: linear-gradient(145deg, #112240, #0a192f);
     border: 2px solid var(--accent-gold);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(197, 160, 89, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     position: relative;
     overflow: hidden;
 }
 
 .logo-badge img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+    width: 95%;
+    height: 95%;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .party-title {
-    font-size: 2rem;
+    font-size: 1.4rem; /* تصغير الخط */
     font-weight: 900;
-    letter-spacing: -0.5px;
     color: #ffffff;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    margin-bottom: 4px;
-    word-spacing: 5px;
+    margin-bottom: 2px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
 .party-subtitle {
-    font-size: 0.85rem;
+    font-size: 0.7rem; /* تصغير الخط */
     color: var(--accent-gold);
     font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-}
-
-/* إخفاء الـ placeholder أثناء التصدير */
-.pdf-exporting input::placeholder,
-.pdf-exporting textarea::placeholder {
-    opacity: 0 !important;
-    color: transparent !important;
-}
-
-.pdf-exporting input::-webkit-input-placeholder,
-.pdf-exporting textarea::-webkit-input-placeholder {
-    opacity: 0 !important;
-    color: transparent !important;
-}
-
-.pdf-exporting input::-moz-placeholder,
-.pdf-exporting textarea::-moz-placeholder {
-    opacity: 0 !important;
-    color: transparent !important;
-}
-
-.pdf-exporting input:-ms-input-placeholder,
-.pdf-exporting textarea:-ms-input-placeholder {
-    opacity: 0 !important;
-    color: transparent !important;
+    letter-spacing: 1px;
+    margin-bottom: 5px; /* تقليل المسافة */
 }
 
 .form-badge-title {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     background: rgba(197, 160, 89, 0.15);
     border: 1px solid var(--accent-gold);
     color: #ffffff;
-    padding: 6px 24px;
+    padding: 2px 12px; /* تصغير */
     border-radius: 50px;
-    font-size: 1rem;
+    font-size: 0.9rem; /* تصغير */
     font-weight: 800;
-    backdrop-filter: blur(8px);
-    word-spacing: 3px;
+    margin-bottom: 5px;
 }
 
-/* Form Wrapper */
+/* Form Wrapper - تقليل المساحات الداخلية */
 form {
-    padding: 35px 30px;
+    padding: 15px 20px; /* تقليل padding النموذج */
     background-color: #f8fafc;
 }
 
@@ -180,53 +126,44 @@ form {
     background: #ffffff;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
-    padding: 24px 20px;
-    margin-bottom: 25px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
-    transition: transform 0.2s, box-shadow 0.2s;
+    padding: 10px 15px; /* تقليل padding البطاقة */
+    margin-bottom: 10px; /* تقليل المسافة بين الأقسام */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
 .section-header {
     display: flex;
     align-items: center;
-    font-size: 1.15rem;
+    font-size: 1rem; /* تصغير الخط */
     font-weight: 800;
     color: var(--primary-navy);
-    margin-bottom: 20px;
-    padding-bottom: 10px;
+    margin-bottom: 8px; /* تقليل المسافة */
+    padding-bottom: 4px; /* تقليل المسافة */
     border-bottom: 2px solid #f1f5f9;
-    white-space: normal;
-    word-spacing: 4px;
 }
 
 .section-header .icon-box {
     background: linear-gradient(135deg, var(--primary-navy), var(--emerald-green));
     color: var(--accent-gold);
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
+    width: 24px; /* تصغير */
+    height: 24px; /* تصغير */
+    border-radius: 6px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.95rem;
-    margin-left: 12px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    font-size: 0.8rem; /* تصغير */
+    margin-left: 8px; /* تصغير */
 }
 
-/* Circular Photo Upload Zone */
+/* Circular Photo Upload Zone - تصغير */
 .photo-upload-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 0;
+    padding: 2px 0;
 }
 
 .photo-upload-zone {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    border: 3px dashed var(--accent-gold);
+    width: 80px; /* تصغير */
+    height: 80px; /* تصغير */
+    border: 2px dashed var(--accent-gold);
     background-color: #f8fafc;
     display: flex;
     flex-direction: column;
@@ -235,67 +172,34 @@ form {
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-}
-
-.photo-upload-zone img {
-    width: 100%;
-    height: 100%;
     border-radius: 50%;
-    object-fit: cover;
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-}
-
-.photo-upload-zone .upload-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
 }
 
 .photo-upload-zone .upload-icon {
-    font-size: 2.2rem;
+    font-size: 1.5rem; /* تصغير */
     color: var(--accent-gold);
-    line-height: 1;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .photo-upload-zone p {
-    font-size: 0.75rem;
-    font-weight: 800;
-    color: #475569;
-    text-align: center;
+    font-size: 0.6rem; /* تصغير */
 }
 
 .photo-hint {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin-top: 10px;
-    font-weight: 700;
-    text-align: center;
+    font-size: 0.6rem; /* تصغير */
+    margin-top: 2px;
 }
 
-input[type="file"] {
-    display: none;
-}
-
-/* Input Controls */
+/* Input Controls - تقليل المساحات */
 .form-group {
-    margin-bottom: 18px;
+    margin-bottom: 8px; /* تقليل المسافة */
 }
 
 label {
-    display: block;
     font-weight: 700;
-    font-size: 0.92rem;
+    font-size: 0.8rem; /* تصغير الخط */
     color: #334155;
-    margin-bottom: 8px;
+    margin-bottom: 2px; /* تقليل المسافة */
 }
 
 .required {
@@ -309,20 +213,13 @@ input[type="tel"],
 input[type="date"],
 textarea {
     width: 100%;
-    padding: 13px 16px;
+    padding: 6px 10px; /* تقليل padding الحقول */
     border: 1.5px solid #cbd5e1;
-    border-radius: 10px;
-    font-size: .98rem;
+    border-radius: 6px; /* تقليل التدوير */
+    font-size: 0.85rem; /* تصغير الخط */
     color: var(--text-dark);
     background: #fff;
     outline: none;
-    font-weight: 600;
-    direction: rtl;
-    text-align: right;
-}
-
-input,
-textarea {
     direction: rtl;
     text-align: right;
 }
@@ -330,7 +227,7 @@ textarea {
 .form-row {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 8px; /* تقليل المسافة */
 }
 
 @media (min-width: 576px) {
@@ -341,179 +238,107 @@ textarea {
 
 .radio-group {
     display: flex;
-    gap: 12px;
+    gap: 6px; /* تقليل المسافة */
     flex-wrap: wrap;
 }
 
-.radio-option {
-    flex: 1;
-    min-width: 110px;
-}
-
-.radio-option input {
-    display: none;
-}
-
 .radio-option label {
-    display: block;
-    text-align: center;
-    padding: 12px 10px;
-    background-color: #ffffff;
-    border: 1.5px solid #cbd5e1;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 0.9rem;
-    color: #475569;
-}
-
-.radio-option input:checked + label {
-    background-color: var(--primary-navy);
-    border-color: var(--primary-navy);
-    color: var(--accent-gold);
+    padding: 6px 8px; /* تقليل */
+    border-radius: 6px; /* تقليل */
+    font-size: 0.75rem; /* تصغير */
 }
 
 .pledge-box {
     background-color: rgba(0, 107, 60, 0.05);
-    border-right: 4px solid var(--emerald-green);
-    border-radius: 8px;
-    padding: 16px 18px;
-    font-size: 0.88rem;
-    color: #064e3b;
-    line-height: 1.8;
-    margin-bottom: 18px;
-    text-align: justify;
-    font-weight: 600;
+    border-right: 3px solid var(--emerald-green);
+    border-radius: 6px;
+    padding: 8px 10px; /* تقليل */
+    font-size: 0.75rem; /* تصغير الخط */
+    line-height: 1.5; /* تقليل */
+    margin-bottom: 8px; /* تقليل */
 }
 
 .checkbox-container {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
-    cursor: pointer;
+    gap: 6px; /* تقليل */
+    font-size: 0.75rem;
 }
 
 .checkbox-container input {
-    width: 20px;
-    height: 20px;
-    margin-top: 2px;
-    accent-color: var(--emerald-green);
+    width: 16px; /* تصغير */
+    height: 16px; /* تصغير */
+    margin-top: 1px;
 }
 
 .actions-group {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-top: 15px;
+    margin-top: 10px; /* تقليل */
+    gap: 8px; /* تقليل */
 }
 
-@media (min-width: 576px) {
-    .actions-group {
-        flex-direction: row;
-    }
-}
-
-.submit-btn {
-    flex: 2;
-    background: linear-gradient(135deg, #0a192f 0%, #004d25 100%);
-    color: #ffffff;
-    border: 1px solid var(--accent-gold);
-    padding: 16px;
-    border-radius: 12px;
-    font-size: 1.05rem;
-    font-weight: 800;
-    cursor: pointer;
-}
-
-.export-pdf-btn {
-    flex: 1;
-    background: #ffffff;
-    color: var(--primary-navy);
-    border: 2px solid var(--primary-navy);
-    padding: 16px;
-    border-radius: 12px;
-    font-size: 1rem;
-    font-weight: 800;
-    cursor: pointer;
+.submit-btn, .export-pdf-btn {
+    padding: 8px; /* تقليل padding الأزرار */
+    border-radius: 8px; /* تقليل */
+    font-size: 0.9rem; /* تصغير الخط */
 }
 
 .footer {
-    text-align: center;
-    padding: 20px;
-    font-size: 0.85rem;
-    color: var(--text-muted);
+    padding: 10px; /* تقليل padding الفوتر */
+    font-size: 0.7rem; /* تصغير الخط */
     border-top: 1px solid var(--border-color);
     background-color: #ffffff;
-    font-weight: 700;
 }
 
 @media print {
     .no-print {
         display: none !important;
     }
+    body {
+        background: none;
+        padding: 0;
+    }
+    .main-container {
+        box-shadow: none;
+        max-width: 100%;
+    }
 }
 
-/* Export settings */
-
+/* Export settings - إعدادات التصدير النهائية */
 .pdf-exporting {
-    width: 190mm !important;
-    max-width: 190mm !important;
-    margin: auto;
+    width: 210mm !important; /* عرض A4 */
+    height: 297mm !important; /* طول A4 */
+    margin: 0 !important;
+    padding: 10mm !important; /* هوامش داخلية للورقة */
+    background: #ffffff !important;
     zoom: 1;
-    font-kerning: normal !important;
-    text-rendering: optimizeLegibility;
-    font-family: 'Cairo', sans-serif !important;
-    letter-spacing: 0 !important;
-    word-spacing: normal !important;
-    direction: rtl;
+    box-sizing: border-box;
 }
 
-.pdf-exporting .section-card {
-    page-break-inside: avoid;
-    break-inside: avoid;
-    margin-bottom: 10px;
-    padding: 16px;
+.pdf-exporting * {
+    text-shadow: none !important;
+    box-shadow: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
 }
 
-.pdf-exporting .form-group {
-    margin-bottom: 10px;
-}
+/* الحل الجذري لإخفاء الـ placeholder تماماً */
+.pdf-exporting ::-webkit-input-placeholder { color: transparent !important; }
+.pdf-exporting ::-moz-placeholder { color: transparent !important; }
+.pdf-exporting :-ms-input-placeholder { color: transparent !important; }
+.pdf-exporting ::placeholder { color: transparent !important; }
 
-.pdf-exporting .section-header {
-    margin-bottom: 12px;
-    padding-bottom: 6px;
-}
-
-.pdf-exporting label {
-    margin-bottom: 5px;
-}
-
+/* التأكد من عدم ترك مسافات فارغة */
+.pdf-exporting input, 
 .pdf-exporting textarea {
-    min-height: 55px;
+    line-height: 1.2 !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
 }
 
-.pdf-exporting .header {
-    padding: 25px;
-}
-
-.pdf-exporting .logo-badge {
-    width: 90px;
-    height: 90px;
-}
-
-.pdf-exporting .party-title {
-    font-size: 28px;
-}
-
-.pdf-exporting .party-subtitle {
-    font-size: 13px;
-}
-
-.pdf-exporting .pledge-box {
-    font-size: 13px;
-    line-height: 1.6;
-}
-
-.pdf-exporting .footer {
-    padding: 12px;
+/* منع التكسير غير المرغوب */
+.pdf-exporting .section-card,
+.pdf-exporting .form-group {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-bottom: 5px !important;
 }
