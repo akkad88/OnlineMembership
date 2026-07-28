@@ -52,16 +52,16 @@
      border-bottom: 4px solid var(--accent-gold);
  }
 
-     .header::before {
-         content: '';
-         position: absolute;
-         top: 0;
-         left: 0;
-         right: 0;
-         bottom: 0;
-         background: radial-gradient(circle at center, rgba(197, 160, 89, 0.1) 0%, transparent 70%);
-         pointer-events: none;
-     }
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(197, 160, 89, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
 
  /* Circular Logo Badge Styling */
  .logo-badge {
@@ -79,22 +79,22 @@
      overflow: hidden;
  }
 
-     .logo-badge img {
-         width: 100%;
-         height: 100%;
-         object-fit: fill;
-         object-position: center;
-         border-radius: 50%;
-     }
+.logo-badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
 
- .party-title {
+.party-title {
      font-size: 2rem;
      font-weight: 900;
      letter-spacing: -0.5px;
      color: #ffffff;
      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
      margin-bottom: 4px;
- }
+}
 
  .party-subtitle {
      font-size: 0.85rem;
@@ -146,19 +146,19 @@
      border-bottom: 2px solid #f1f5f9;
  }
 
-     .section-header .icon-box {
-         background: linear-gradient(135deg, var(--primary-navy), var(--emerald-green));
-         color: var(--accent-gold);
-         width: 32px;
-         height: 32px;
-         border-radius: 8px;
-         display: inline-flex;
-         align-items: center;
-         justify-content: center;
-         font-size: 0.95rem;
-         margin-left: 12px;
-         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-     }
+.section-header .icon-box {
+    background: linear-gradient(135deg, var(--primary-navy), var(--emerald-green));
+    color: var(--accent-gold);
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    margin-left: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
 
  /* Circular Photo Upload Zone */
  .photo-upload-wrapper {
@@ -186,39 +186,39 @@
      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
  }
 
-     .photo-upload-zone img {
-         width: 100%;
-         height: 100%;
-         border-radius: 50%;
-         object-fit: cover;
-         display: none;
-         position: absolute;
-         top: 0;
-         left: 0;
-         z-index: 2;
-     }
+.photo-upload-zone img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
 
-     .photo-upload-zone .upload-content {
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         justify-content: center;
-         z-index: 1;
-     }
+.photo-upload-zone .upload-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
 
-     .photo-upload-zone .upload-icon {
-         font-size: 2.2rem;
-         color: var(--accent-gold);
-         line-height: 1;
-         margin-bottom: 4px;
-     }
+.photo-upload-zone .upload-icon {
+    font-size: 2.2rem;
+    color: var(--accent-gold);
+    line-height: 1;
+    margin-bottom: 4px;
+}
 
-     .photo-upload-zone p {
-         font-size: 0.75rem;
-         font-weight: 800;
-         color: #475569;
-         text-align: center;
-     }
+.photo-upload-zone p {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #475569;
+    text-align: center;
+}
 
  .photo-hint {
      font-size: 0.8rem;
@@ -264,6 +264,18 @@
      background-color: #ffffff;
      outline: none;
      font-weight: 600;
+ }
+
+ /* إضافات وتعديلات لضمان عدم انقسام الحقول بين الصفحات ومنع ظهور الـ placeholder */
+ .form-row, .form-group, .section-card {
+     page-break-inside: avoid;
+     break-inside: avoid;
+ }
+
+ /* كلاس خاص لتفريغ وإخفاء الـ placeholder عند الطباعة أو التصدير */
+ .pdf-exporting input::placeholder,
+ .pdf-exporting textarea::placeholder {
+     color: transparent !important;
  }
 
  .form-row {
