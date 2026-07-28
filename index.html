@@ -234,12 +234,12 @@
         try {
             submitBtn.disabled = true;
             submitBtn.innerHTML = "جاري إنشاء ملف الـ PDF... ⏳";
-            const element = prepareForPDF();
+            const element = await prepareForPDF();
             const opt = {
                 margin: [6, 6, 6, 6],
                 filename: `استمارة_انتساب_${fullName}.pdf`,
-                image: { type: 'jpeg', quality: 1 },
-                html2canvas:{scale:3,useCORS:true,allowTaint:false,letterRendering:true,backgroundColor:"#ffffff",scrollY:0},
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas:{scale:2,useCORS:true,allowTaint:false,letterRendering:true,backgroundColor:"#ffffff",scrollY:0},
                 pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
@@ -283,8 +283,8 @@
         const opt = {
             margin: [6, 6, 6, 6],
             filename: `استمارة_انتساب_${fullName}.pdf`,
-            image: { type: 'jpeg', quality: 1 },
-            html2canvas:{scale:3,useCORS:true,allowTaint:false,letterRendering:true,backgroundColor:"#ffffff",scrollY:0},
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas:{scale:2,useCORS:true,allowTaint:false,letterRendering:true,backgroundColor:"#ffffff",scrollY:0},
             pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
             jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
         };
