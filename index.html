@@ -269,7 +269,7 @@
                 margin: [6, 6, 6, 6],
                 filename: `استمارة_انتساب_${fullName}.pdf`,
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2, useCORS: true, allowTaint: false,useCORS: true, allowTaint: true, letterRendering: true, backgroundColor: "#ffffff", scrollY: 0 },
+                html2canvas: { scale: 2, useCORS: true, allowTaint: false,useCORS: true, allowTaint: true, letterRendering: true, backgroundColor: "#ffffff", scrollY: 0, logging:false },
                 pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
@@ -314,7 +314,7 @@
             margin: [6, 6, 6, 6],
             filename: `استمارة_انتساب_${fullName}.pdf`,
             image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true, allowTaint: false,useCORS: true, allowTaint: true, letterRendering: true, backgroundColor: "#ffffff", scrollY: 0 },
+            html2canvas: { scale: 2, useCORS: true, allowTaint: false,useCORS: true, allowTaint: true, letterRendering: true, backgroundColor: "#ffffff", scrollY: 0, logging:false },
             pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
             jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
         };
